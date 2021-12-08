@@ -4,9 +4,8 @@ from time import sleep
 
 cards=[]
 back_cards = []
-back_Card = '/home/julianafreitas/FURG/AED1/memoryGame/images/giphy.gif'
-pontos = 0
-error = 0
+spots = 0
+errors = 0
 
 def main(Title: str, Width: int, Height: int):
     c1 = Card("/home/julianafreitas/FURG/AED1/memoryGame/images/js.png", 1)
@@ -24,7 +23,6 @@ def main(Title: str, Width: int, Height: int):
 
     # Elementos
     introduction(win)
-
     SortRandle(cards)
     show_cards(win)
 
@@ -34,16 +32,15 @@ def main(Title: str, Width: int, Height: int):
     win.close()
 
 def background(win): 
-    # win.setBackground("Black")
     c = Image(Point(420, 300), '/home/julianafreitas/FURG/AED1/memoryGame/images/roxo.png')  
     c.draw(win)
 
 def introduction(win):
-    i1 = Text(Point(430,70), "JOGO DA MEMÓRIA DOS DEV's")
-    i1.setTextColor('White')
-    i1.setSize(23)
-    i1.setStyle('bold')
-    i1.draw(win)
+    text_title = Text(Point(430,70), "JOGO DA MEMÓRIA DOS DEV's")
+    text_title.setTextColor('White')
+    text_title.setSize(23)
+    text_title.setStyle('bold')
+    text_title.draw(win)
     text_intro = Text(Point(450,140), "Você deve memorizar os cards dispostos e encontrar \n os pares referentes as diferentes linguagens de programação")
     text_intro.setTextColor('White')
     text_intro.draw(win)
@@ -71,6 +68,7 @@ def SortRandle(sequence):
 def show_cards(win):
     for card in cards:
         back_cards.append('/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+
     card1_p=[240, 430]
     card2_p=[360, 430]
     card3_p=[480, 430]
@@ -117,7 +115,7 @@ def show_cards(win):
         df = Image(Point(420, 300), '/home/julianafreitas/FURG/AED1/memoryGame/images/game_over.png')  
         df.draw(win)
         
-        if pontos > 9 and error <= 1:
+        if spots > 9 and errors <= 1:
             text_win = Text(Point(420,450), "Parabéns, você Ganhou :D !")
             text_win.setTextColor('White')
             text_win.setSize(25)
@@ -134,12 +132,12 @@ def show_cards(win):
 
     def select_cards(win):
         clickeds = []
-        c = 0
-        t = 0
+        jogada = 0
+        chances = 0
         p1 = []
         
-        while t < 4:
-            text_pontos = Text(Point(80,25), "Pontuação: {}".format(pontos))
+        while chances < 4:
+            text_pontos = Text(Point(80,25), "Pontuação: {}".format(spots))
             text_pontos.setTextColor('White')
             text_pontos.undraw()
             text_pontos.setSize(18)
@@ -147,20 +145,20 @@ def show_cards(win):
             text_pontos.draw(win)
 
             def verifica():
-                global error
-                global pontos
+                global errors
+                global spots
                 if clickeds[0].id == clickeds[1].id:
-                    pontos += 3
+                    spots += 3
                     return False
                 else: 
-                    if pontos == 0:
-                        pontos=0
+                    if spots == 0:
+                        spots=0
                     else:
-                        pontos -= 3
-                    error += 1
+                        spots -= 3
+                    errors += 1
                     return True
         
-            while c < 2:
+            while jogada < 2:
                 mouse = win.getMouse()
                 x = mouse.getX()
                 y = mouse.getY()
@@ -177,11 +175,11 @@ def show_cards(win):
                             card1_backs = Image(Point(240, 430), back_cards[7])
                             card1s.undraw()
                             card1_backs.draw(win)
-                            teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
-                            teste.draw(win)
+                            back = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+                            back.draw(win)
                     else: 
                         p1 = card1_p
-                    c += 1
+                    jogada += 1
 
                 elif x >= 316 and x <= 404 and y>=364 and y <= 496:
                     clickeds.append(cards[1])
@@ -196,11 +194,11 @@ def show_cards(win):
                             card2_backs = Image(Point(360, 430), back_cards[7])
                             card2s.undraw()
                             card2_backs.draw(win)
-                            teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
-                            teste.draw(win)
+                            back = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+                            back.draw(win)
                     else: 
                         p1 = card2_p                   
-                    c += 1
+                    jogada += 1
                     
                 elif x >= 436 and x <= 524 and y>=364 and y <= 496:
                     clickeds.append(cards[2])
@@ -215,11 +213,11 @@ def show_cards(win):
                             card3_backs = Image(Point(480, 430), back_cards[7])
                             card3s.undraw()
                             card3_backs.draw(win)
-                            teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
-                            teste.draw(win)
+                            back = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+                            back.draw(win)
                     else: 
                         p1 = card3_p
-                    c += 1
+                    jogada += 1
             
                 elif x >= 556 and x <= 644 and y>=364 and y <= 496:
                     clickeds.append(cards[3])
@@ -234,11 +232,11 @@ def show_cards(win):
                             card4_backs = Image(Point(600, 430), back_cards[7])
                             card4s.undraw()
                             card4_backs.draw(win)
-                            teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
-                            teste.draw(win)
+                            back = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+                            back.draw(win)
                     else: 
                         p1 = card4_p
-                    c += 1
+                    jogada += 1
                     
                 elif x >= 196 and x <= 288 and y>=234 and y <= 366: 
                     clickeds.append(cards[4])
@@ -253,11 +251,11 @@ def show_cards(win):
                             card5_backs = Image(Point(240, 300), back_cards[7])
                             card5s.undraw()
                             card5_backs.draw(win)
-                            teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
-                            teste.draw(win)
+                            back = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+                            back.draw(win)
                     else: 
                         p1 = card5_p
-                    c += 1
+                    jogada += 1
                    
                 elif x >= 316 and x <= 404 and y>=234 and y <= 366:
                     clickeds.append(cards[5])
@@ -272,11 +270,11 @@ def show_cards(win):
                             card6_backs = Image(Point(360, 300), back_cards[7])
                             card6s.undraw()
                             card6_backs.draw(win)
-                            teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
-                            teste.draw(win)
+                            back = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+                            back.draw(win)
                     else: 
                         p1 = card6_p
-                    c += 1
+                    jogada += 1
                     
                 elif x >= 436 and x <= 524 and y>=234 and y <= 366:
                     clickeds.append(cards[6])
@@ -291,11 +289,11 @@ def show_cards(win):
                             card7_backs = Image(Point(480, 300), back_cards[7])
                             card7s.undraw()
                             card7_backs.draw(win)
-                            teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
-                            teste.draw(win)
+                            back = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+                            back.draw(win)
                     else: 
                         p1 = card7_p
-                    c += 1
+                    jogada += 1
                     
                 elif x >= 556 and x <= 644 and y>=234 and y <= 366:
                     clickeds.append(cards[7])
@@ -310,18 +308,17 @@ def show_cards(win):
                             card8_backs = Image(Point(600, 300), back_cards[7])
                             card8s.undraw()
                             card8_backs.draw(win)
-                            teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
-                            teste.draw(win)
+                            back = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
+                            back.draw(win)
                     else: 
                         p1 = card8_p
-                    c += 1
-            c = 0
+                    jogada += 1
+            jogada = 0
             text_pontos.undraw()
-            t += 1
+            chances += 1
             p1 = []
             clickeds = []
         text_pontos.draw(win)
     select_cards(win)
     calc_result(win) 
-
 main("Memory Game", 840, 640)
