@@ -130,14 +130,12 @@ def show_cards(win):
             text_lost.setSize(25)
             text_lost.setStyle('bold')
             text_lost.draw(win) 
-            sleep(5)     
+            sleep(5)
+
     def select_cards(win):
-        selecteds = [0,0,0,0,0,0,0,0]
         clickeds = []
-       
         c = 0
         t = 0
-        desvira = False
         p1 = []
         
         while t < 4:
@@ -152,11 +150,9 @@ def show_cards(win):
                 global error
                 global pontos
                 if clickeds[0].id == clickeds[1].id:
-                    print("acertou")
                     pontos += 3
                     return False
                 else: 
-                    print("Errou")
                     if pontos == 0:
                         pontos=0
                     else:
@@ -165,17 +161,13 @@ def show_cards(win):
                     return True
         
             while c < 2:
-                print(p1, "inicio while")
                 mouse = win.getMouse()
                 x = mouse.getX()
                 y = mouse.getY()
                 if x >= 196 and x <= 288 and y>=364 and y <= 496:
-                    print("primeiro")
                     clickeds.append(cards[0])
                     card1_back.undraw()
                     card1.undraw()
-                    selecteds[0] = 1
-                    
                     card1.draw(win)
                     if len(clickeds) == 2:
                         result = verifica()
@@ -187,18 +179,14 @@ def show_cards(win):
                             card1_backs.draw(win)
                             teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
                             teste.draw(win)
-                            print(p1)
                     else: 
                         p1 = card1_p
                     c += 1
 
                 elif x >= 316 and x <= 404 and y>=364 and y <= 496:
-                    print("segundo")
                     clickeds.append(cards[1])
                     card2_back.undraw()
                     card2.undraw()
-                    selecteds[1] = 1
-                    
                     card2.draw(win)
                     if len(clickeds) == 2:
                         result = verifica()
@@ -210,18 +198,14 @@ def show_cards(win):
                             card2_backs.draw(win)
                             teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
                             teste.draw(win)
-                            print(p1)
                     else: 
                         p1 = card2_p                   
                     c += 1
                     
                 elif x >= 436 and x <= 524 and y>=364 and y <= 496:
-                    print("terceiro")
                     clickeds.append(cards[2])
                     card3_back.undraw()
                     card3.undraw()
-                    selecteds[2] = 1
-                    
                     card3.draw(win)
                     if len(clickeds) == 2:
                         result = verifica()
@@ -233,20 +217,15 @@ def show_cards(win):
                             card3_backs.draw(win)
                             teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
                             teste.draw(win)
-                            print(p1)
                     else: 
                         p1 = card3_p
                     c += 1
             
                 elif x >= 556 and x <= 644 and y>=364 and y <= 496:
-                    print("quarto")
                     clickeds.append(cards[3])
                     card4_back.undraw()
                     card4.undraw()
-                    selecteds[3] = 1
-                    
                     card4.draw(win)
-                    print(len(clickeds))
                     if len(clickeds) == 2:
                         result = verifica()
                         if result:
@@ -257,19 +236,15 @@ def show_cards(win):
                             card4_backs.draw(win)
                             teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
                             teste.draw(win)
-                            print(p1, "quarto")
                     else: 
                         p1 = card4_p
                     c += 1
                     
                 elif x >= 196 and x <= 288 and y>=234 and y <= 366: 
-                    print("quinto")
                     clickeds.append(cards[4])
                     card5_back.undraw()
                     card5.undraw()
-                    selecteds[4] = 1
                     card5.draw(win)
-                    print(len(clickeds))
                     if len(clickeds) == 2:
                         result = verifica()
                         if result:
@@ -280,18 +255,14 @@ def show_cards(win):
                             card5_backs.draw(win)
                             teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
                             teste.draw(win)
-                            print(p1)
                     else: 
                         p1 = card5_p
                     c += 1
                    
                 elif x >= 316 and x <= 404 and y>=234 and y <= 366:
-                    print("sexto")
                     clickeds.append(cards[5])
                     card6_back.undraw()
                     card6.undraw()
-                    selecteds[5] = 1
-                    
                     card6.draw(win)
                     if len(clickeds) == 2:
                         result = verifica()
@@ -303,18 +274,14 @@ def show_cards(win):
                             card6_backs.draw(win)
                             teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
                             teste.draw(win)
-                            print(p1)
                     else: 
                         p1 = card6_p
                     c += 1
                     
                 elif x >= 436 and x <= 524 and y>=234 and y <= 366:
-                    print("setimo")
                     clickeds.append(cards[6])
                     card7_back.undraw()
                     card7.undraw()
-                    selecteds[6] = 1
-                    
                     card7.draw(win)
                     if len(clickeds) == 2:
                         result = verifica()
@@ -326,20 +293,15 @@ def show_cards(win):
                             card7_backs.draw(win)
                             teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
                             teste.draw(win)
-                            print(p1)
                     else: 
                         p1 = card7_p
                     c += 1
                     
                 elif x >= 556 and x <= 644 and y>=234 and y <= 366:
-                    print("oitavo")
                     clickeds.append(cards[7])
                     card8_back.undraw()
                     card8.undraw()
-                    selecteds[7] = 1
                     card8.draw(win)
-                    print(len(clickeds))
-                    
                     if len(clickeds) == 2:
                         result = verifica()
                         if result:
@@ -350,12 +312,9 @@ def show_cards(win):
                             card8_backs.draw(win)
                             teste = Image(Point(p1[0], p1[1]), '/home/julianafreitas/FURG/AED1/memoryGame/images/back.gif')
                             teste.draw(win)
-                            print(p1, "oitavo")
                     else: 
                         p1 = card8_p
                     c += 1
-    
-            print(clickeds)
             c = 0
             text_pontos.undraw()
             t += 1
