@@ -27,7 +27,6 @@ def main(Title: str, Width: int, Height: int):
     show_cards(win)
 
     #Fechamento
-    sleep(5)
     win.getMouse()
     win.close()
 
@@ -116,14 +115,14 @@ def show_cards(win):
         df.draw(win)
         
         if spots > 9 and errors <= 1:
-            text_win = Text(Point(420,450), "Parabéns, você Ganhou :D !")
+            text_win = Text(Point(420,450), "Parabéns, você ganhou :D !")
             text_win.setTextColor('White')
             text_win.setSize(25)
             text_win.setStyle('bold')
             text_win.draw(win)
             sleep(5) 
         else:
-            text_lost = Text(Point(420,450), "Você Perdeu :,( !")
+            text_lost = Text(Point(420,450), "Você perdeu :,( !")
             text_lost.setTextColor('White')
             text_lost.setSize(25)
             text_lost.setStyle('bold')
